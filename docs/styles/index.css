@@ -1,0 +1,108 @@
+body {
+    font-family: "Roboto", sans-serif;
+    margin: 0px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.landing {
+    width: 100%;
+    padding-top: 50px;
+    background-color: #071522;
+}
+
+.landing .heading {
+    width: 100%;
+    font-style: normal;
+    text-align: center;
+}
+
+.landing .heading .title {
+    color: white;
+    font-size: 8em;
+    font-family: "Jura", sans-serif;
+    font-weight: 800;
+    text-shadow: 1px 1px 20px rgba(255, 255, 255, .4);
+    opacity: .9;
+}
+
+.landing .heading .name {
+    color: white;
+    font-size: 2em;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: .85;
+}
+
+.landing .heading .date {
+    color: white;
+    font-size: 1.2em;
+    font-family: "Roboto", sans-serif;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    opacity: .7;
+}
+
+.landing .city {
+    width: 100%;
+    text-align: center;
+}
+
+.landing .city img {
+    display: inline-block;
+    width: 100%;
+    max-width: 1700px;
+}
+
+.section .heading {
+    width: 100%;
+    font-style: normal;
+    text-align: center;
+}
+
+.section .heading .title {
+    font-size: 8em;
+    font-family: "Jura", sans-serif;
+    font-weight: 800;
+}
+
+.section .heading .description {
+    font-size: 2em;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: .85;
+}
+
+.nav {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    color: white;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: rgba(7, 21, 34, .8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.nav .link {
+    display: inline-block;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.nav .link a {
+    color: white;
+    opacity: .5;
+}
+
+.nav .link a:hover {
+    opacity: 1;
+}
