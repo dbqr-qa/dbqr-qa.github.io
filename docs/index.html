@@ -1,14 +1,16 @@
 <html>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jura:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jura:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/index.css?t=5">
 
     <script type="text/javascript" src="scripts/jquery-3.7.1.min.js"></script>
 
+    <tible>DBQR-QA: A Shared Task</title>
+
     <body>
         <div class="landing">
-            <div class="heading">
+            <div class="header">
                 <div class="title">
                     DBQR-QA
                 </div>
@@ -23,13 +25,83 @@
                 <img src="images/index/landing-city.jpg">
             </div>
         </div>
-        <div class="bright section">
-            <div class="heading">
+        <div class="grey section">
+            <div class="header">
+                <div class="leading">
+                    A SHARED TASK
+                </div>
                 <div class="title">
                     TLDR
                 </div>
                 <div class="description">
                     Generate programs to answer a series of questions.
+                </div>
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <div class="icon">
+                        <img src="images/index/db-tables.png">
+                    </div>
+                    <div class="text">
+                        <b>WHAT YOU GET</b>
+                        <br>
+                        400 questions, 10 for each conversation,
+                        with tables (Pandas Data Frame) queried from our
+                        graph database.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="icon">
+                        <img src="images/index/calculation.png">
+                    </div>
+                    <div class="text">
+                        <b>YOUR MODEL GENERATES</b>
+                        <br>
+                        Programs that answer each question using 
+                        our pre-defined functions or your own programs
+                        in any language.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="icon">
+                        <img src="images/index/check.png">
+                    </div>
+                    <div class="text">
+                        <b>WHAT EVALUATE</b>
+                        <br>
+                        The answer your model generated (number, text, set, or table).
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="blue section">
+            <div class="programs splits">
+                <div class="panel">
+                    <div class="question">
+                        <div class="order">
+                            QUESTION 1
+                        </div>
+                        <div class="text">
+                            What is the ratio of combined revenues reported by companies 
+                            in the retail industry with liabilities between 100M and 500M 
+                            every year during 2017 and 2020 to those with liabilities 
+                            between 300M and 1B during the same years?
+                        </div>
+                    </div>
+                    <img src="images/index/question-left.png">
+                </div>
+                <div class="panel">
+                    <div class="question">
+                        <div class="order">
+                            QUESTION 4
+                        </div>
+                        <div class="text">
+                            If I removed the top three companies by combined deferred 
+                            tax liabilities from the first group, what would 
+                            the average be?
+                        </div>
+                    </div>
+                    <img src="images/index/question-right.png">
                 </div>
             </div>
         </div>
