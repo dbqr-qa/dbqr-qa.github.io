@@ -1,12 +1,14 @@
 <html>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jura:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/index.css?t=5">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Jura:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/index.css?t=14">
 
     <script type="text/javascript" src="scripts/jquery-3.7.1.min.js"></script>
 
-    <tible>DBQR-QA: A Shared Task</title>
+    <head>
+        <title>DBQR-QA: A Shared Task</title>
+    </head>
 
     <body>
         <div class="landing">
@@ -15,17 +17,18 @@
                     DBQR-QA
                 </div>
                 <div class="name">
-                    A Question Answering Dataset on a Hybrid of Database Querying and Reasoning
+                    <span class="highlight">A Question-Answering Dataset</span> 
+                    on a Hybrid of Database Querying and Reasoning
                 </div>
                 <div class="date">
                     Available 2 September 2024
                 </div>
             </div>
             <div class="city">
-                <img src="images/index/landing-city.jpg">
+                <img src="images/index/city.jpg">
             </div>
         </div>
-        <div class="grey section">
+        <div class="grey padded section">
             <div class="header">
                 <div class="leading">
                     A SHARED TASK
@@ -45,7 +48,7 @@
                     <div class="text">
                         <b>WHAT YOU GET</b>
                         <br>
-                        400 questions, 10 for each conversation,
+                        400 questions, ten per conversation,
                         with tables (Pandas Data Frame) queried from our
                         graph database.
                     </div>
@@ -57,8 +60,8 @@
                     <div class="text">
                         <b>YOUR MODEL GENERATES</b>
                         <br>
-                        Programs that answer each question using 
-                        our pre-defined functions or your own programs
+                        Programs answering each question using 
+                        our pre-defined (Python) or any functions
                         in any language.
                     </div>
                 </div>
@@ -74,34 +77,423 @@
                 </div>
             </div>
         </div>
-        <div class="blue section">
-            <div class="programs splits">
-                <div class="panel">
-                    <div class="question">
-                        <div class="order">
-                            QUESTION 1
-                        </div>
-                        <div class="text">
-                            What is the ratio of combined revenues reported by companies 
-                            in the retail industry with liabilities between 100M and 500M 
-                            every year during 2017 and 2020 to those with liabilities 
-                            between 300M and 1B during the same years?
-                        </div>
-                    </div>
-                    <img src="images/index/question-left.png">
+        <div class="blue padded section centered">
+            <div class="header">
+                <div class="description only">
+                    Test the models' abilities to 
+                    <span class="highlight">memorize and adapt</span>
+                    to the changing logic throughout a conversation.
                 </div>
-                <div class="panel">
-                    <div class="question">
-                        <div class="order">
-                            QUESTION 4
+            </div>
+            <table class="programs">
+                <tr>
+                    <td>
+                        <div class="question">
+                            <div class="order">
+                                QUESTION 1
+                            </div>
+                            <div class="text">
+                                What is the ratio of combined revenues reported by companies 
+                                in the retail industry with liabilities between 100M and 500M 
+                                every year during 2017 and 2020 to those with liabilities 
+                                between 300M and 1B during the same years?
+                            </div>
                         </div>
-                        <div class="text">
-                            If I removed the top three companies by combined deferred 
-                            tax liabilities from the first group, what would 
-                            the average be?
+                    </td>
+                    <td>
+                        <div class="question">
+                            <div class="order">
+                                QUESTION 4
+                            </div>
+                            <div class="text">
+                                If I removed the top three companies by combined deferred 
+                                tax liabilities from the first group, what would 
+                                be the ratio?
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="images/index/question-left.png">
+                    </td>
+                    <td>
+                        <img src="images/index/question-right.png">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="medium grey padded section">
+            <div class="header">
+                <div class="title">
+                    Evaluation
+                </div>
+                <div class="description">
+                    Three-step automatic and manual evaluation.
+                </div>
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <div class="icon">
+                        <img src="images/index/verify.png">
+                    </div>
+                    <div class="text">
+                        <b>AUTOMATIC</b>
+                        <br>
+                        Evaluate using our Python evaluation script
+                        offline (unlimited) or online (up to 20 times per day).
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="icon">
+                        <img src="images/index/robot.png">
+                    </div>
+                    <div class="text">
+                        <b>GPT-4O</b>
+                        <br>
+                        Close-to-human accuracy. Use our prompt (unlimited) or
+                        evaluate online (once a day).
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="icon">
+                        <img src="images/index/human.png">
+                    </div>
+                    <div class="text">
+                        <b>MANUAL</b>
+                        <br>
+                        One week to check your answers with
+                        all labels manually. Starts after the system submission deadline.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="small splitted white section">
+            <div class="container">
+                <div class="grey split">
+                    <div class="header">
+                        <div class="title">
+                            Dataset Statistics
+                        </div>
+                        <div class="description">
+                            Five subsets of questions by type and complexity.
                         </div>
                     </div>
-                    <img src="images/index/question-right.png">
+                    <div class="stats content">
+                        <table>
+                            <tr>
+                                <td>100 &times;</td>
+                                <td>
+                                    <div class="symbol">
+                                        S
+                                    </div>
+                                </td>
+                                <td>:</td>
+                                <td>
+                                    <span class="highlight">Simple</span> 
+                                    query with specific companies
+                                </td>
+                                <td>
+                                    <div class="bright disabled button">
+                                        View
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="right">100 &times;</td>
+                                <td>
+                                    <div class="symbol">
+                                        C
+                                    </div>
+                                </td>
+                                <td>:</td>
+                                <td>
+                                    <span class="highlight">Complex</span>
+                                    query with unspecified companies
+                                </td>
+                                <td>
+                                    <div class="bright disabled button">
+                                        View
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="right">50 &times;</td>
+                                <td>
+                                    <div class="symbol">
+                                        T
+                                    </div>
+                                </td>
+                                <td>:</td>
+                                <td>
+                                    Reasoning steps requiring 
+                                    <span class="highlight">multiple tables</span>
+                                </td>
+                                <td>
+                                    <div class="bright disabled button">
+                                        View
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="right">100 &times;</td>
+                                <td>
+                                    <div class="symbol">
+                                        H
+                                    </div>
+                                </td>
+                                <td>:</td>
+                                <td>
+                                    <span class="highlight">Multiple-hop</span>
+                                    query
+                                </td>
+                                <td>
+                                    <div class="bright disabled button">
+                                        View
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="right">50 &times;</td>
+                                <td>
+                                    <div class="symbol">
+                                        I
+                                    </div>
+                                </td>
+                                <td>:</td>
+                                <td>
+                                    <span class="highlight">Instruction</span>
+                                    QA
+                                </td>
+                                <td>
+                                    <div class="bright disabled button">
+                                        View
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div></div>
+                        <div class="note">
+                            Examples and practice data will be available on 
+                            <br>
+                            2 September 2024.
+                        </div>
+                    </div>
+                </div>
+                <div class="charts bottom split">
+                    <div class="content">
+                        <div class="title">
+                            Stages
+                        </div>
+                        <div class="stages">
+                            <div class="item">
+                                <div class="text">
+                                    <div>Practice</div>
+                                    <div class="questions">50 questions</div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="text">
+                                    Training
+                                    <div class="questions">190 questions</div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="text">
+                                    Blind test
+                                    <div class="questions">160 questions</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clock bottom split">
+                    <div class="content">
+                        <div class="title">
+                            Workshop
+                        </div>
+                        <div class="text">
+                            @COLING 2025 in Abu Dhabi, UAE
+                        </div>
+                        <div class="date">
+                            19-20 January 2025
+                        </div>
+                    </div>
+                </div>
+                <div class="dates grey split">
+                    <div class="header">
+                        <div class="title">
+                            Important Dates
+                        </div>
+                        <div class="description">
+                            AoE time zone
+                        </div>
+                        <div class="stats content">
+                            <table>
+                                <tr class="in-progress">
+                                    <td>
+                                        <div class="status">
+                                            In progress
+                                        </div>
+                                    </td>
+                                    <td>
+                                        Practice set release
+                                    </td>
+                                    <td>
+                                        2 Sep 2024
+                                    </td>
+                                </tr>
+                                <tr class="pending">
+                                    <td>
+                                        <div class="status">
+                                            Pending
+                                        </div>
+                                    </td>
+                                    <td>
+                                        Training set release
+                                    </td>
+                                    <td>
+                                        15 Sep 2024
+                                    </td>
+                                </tr>
+                                <tr class="pending">
+                                    <td>
+                                        <div class="status">
+                                            Pending
+                                        </div>
+                                    </td>
+                                    <td>
+                                        Blind test set release
+                                    </td>
+                                    <td>
+                                        23 Oct 2024
+                                    </td>
+                                </tr>
+                                <tr class="pending">
+                                    <td>
+                                        <div class="status">
+                                            Pending
+                                        </div>
+                                    </td>
+                                    <td>
+                                        Submission deadline
+                                    </td>
+                                    <td>
+                                        30 Oct 2024
+                                    </td>
+                                </tr>
+                                <tr class="pending">
+                                    <td>
+                                        <div class="status">
+                                            Pending
+                                        </div>
+                                    </td>
+                                    <td>
+                                        Manual evaluation deadline
+                                    </td>
+                                    <td>
+                                        7 Nov 2024
+                                    </td>
+                                </tr>
+                                <tr class="pending">
+                                    <td>
+                                        <div class="status">
+                                            Pending
+                                        </div>
+                                    </td>
+                                    <td>
+                                        Release of results
+                                    </td>
+                                    <td>
+                                        12 Nov 2024
+                                    </td>
+                                </tr>
+                                <tr class="pending">
+                                    <td>
+                                        <div class="status">
+                                            Pending
+                                        </div>
+                                    </td>
+                                    <td>
+                                        Paper submission deadline
+                                    </td>
+                                    <td>
+                                        25 Nov 2024
+                                    </td>
+                                </tr>
+                                <tr class="pending">
+                                    <td>
+                                        <div class="status">
+                                            Pending
+                                        </div>
+                                    </td>
+                                    <td>
+                                        Notification of acceptance
+                                    </td>
+                                    <td>
+                                        5 Dec 2024
+                                    </td>
+                                </tr>
+                                <tr class="pending">
+                                    <td>
+                                        <div class="status">
+                                            Pending
+                                        </div>
+                                    </td>
+                                    <td>
+                                        Camera-ready deadline
+                                    </td>
+                                    <td>
+                                        13 Dec 2024
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="compact medium black start section">
+            <div class="container">
+                <div class="header">
+                    <div class="title">
+                        Get Ready
+                    </div>
+                    <div class="description">
+                        Check back soon for further updates or 
+                        <span class="highlight">subscribe to our mailing list.</span>
+                    </div>
+                    <div class="subscribe">
+                        <a class="button" href="https://forms.gle/awiMKEqd6SqvsNjz5" target="_blank">
+                            Subscribe
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom black section">
+            <div class="center">
+                <div class="icons">
+                    <a href="https://www.aist.go.jp" target="_blank">
+                        <img src="images/index/aist.png">
+                    </a>
+                    <a href="https://www.jaist.ac.jp/english/" target="_blank">
+                        <img src="images/index/jaist.png">
+                    </a>
+                    <a href="https://www.titech.ac.jp/english" target="_blank">
+                        <img src="images/index/titech.png">
+                    </a>
+                </div>
+                <div class="text">
+                    Copyright &copy; 2024-2025 R. Nararatwong et al. The images are generated by Dall-E &centerdot; 3.
+                    <br>
+                    This website has been designed using resources from Flaticon.com. 
+                    See <u>credit page</u> for links to materials used.
+                    <br>
+                    This study is partially based on the results obtained from a project JPNP20006, 
+                    <br>
+                    commissioned by the New Energy and Industrial Technology Development 
+                    Organization (NEDO).
                 </div>
             </div>
         </div>
@@ -112,23 +504,38 @@
                 </a>
             </div>
             <div class="link">
-                <a href="/quickstart.html">
+                <a href="/future.html">
                     Quick start
                 </a>
             </div>
             <div class="link">
-                <a href="/downloads.html">
+                <a href="/future.html">
                     Downloads
                 </a>
             </div>
             <div class="link">
-                <a href="/participate.html">
+                <a href="/future.html">
                     Participate
                 </a>
             </div>
             <div class="link">
-                <a href="/faq.html">
+                <a href="https://github.com/dbqr-qa/dbqr-qa.github.io/issues" target="_blank">
+                    Issues
+                </a>
+            </div>
+            <div class="link">
+                <a href="/future.html">
+                    Terms
+                </a>
+            </div>
+            <div class="link">
+                <a href="/future.html">
                     FAQ
+                </a>
+            </div>
+            <div class="link">
+                <a href="/future.html">
+                    Contact
                 </a>
             </div>
         </div>
