@@ -1,8 +1,9 @@
 <html>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Jura:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/index.css?t=14">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Jura:wght@300..700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="styles/index.css?t=15">
 
     <script type="text/javascript" src="scripts/jquery-3.7.1.min.js"></script>
 
@@ -85,43 +86,47 @@
                     to the changing logic throughout a conversation.
                 </div>
             </div>
-            <table class="programs">
-                <tr>
-                    <td>
-                        <div class="question">
-                            <div class="order">
-                                QUESTION 1
-                            </div>
-                            <div class="text">
-                                What is the ratio of combined revenues reported by companies 
-                                in the retail industry with liabilities between 100M and 500M 
-                                every year during 2017 and 2020 to those with liabilities 
-                                between 300M and 1B during the same years?
-                            </div>
+            <div class="programs">
+                <div class="container">
+                    <div class="question">
+                        <div class="order">
+                            QUESTION 1
                         </div>
-                    </td>
-                    <td>
-                        <div class="question">
-                            <div class="order">
-                                QUESTION 4
-                            </div>
-                            <div class="text">
-                                If I removed the top three companies by combined deferred 
-                                tax liabilities from the first group, what would 
-                                be the ratio?
-                            </div>
+                        <div class="text">
+                            What is the ratio of combined revenues reported by companies 
+                            in the retail industry with liabilities between 100M and 500M 
+                            every year during 2017 and 2020 to those with liabilities 
+                            between 300M and 1B during the same years?
                         </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+                    </div>
+                    <div class="question desktop">
+                        <div class="order">
+                            QUESTION 4
+                        </div>
+                        <div class="text">
+                            If I removed the top three companies by combined deferred 
+                            tax liabilities from the first group, what would 
+                            be the ratio?
+                        </div>
+                    </div>
+                    <div>
                         <img src="images/index/question-left.png">
-                    </td>
-                    <td>
+                    </div>
+                    <div class="question mobile">
+                        <div class="order">
+                            QUESTION 4
+                        </div>
+                        <div class="text">
+                            If I removed the top three companies by combined deferred 
+                            tax liabilities from the first group, what would 
+                            be the ratio?
+                        </div>
+                    </div>
+                    <div>
                         <img src="images/index/question-right.png">
-                    </td>
-                </tr>
-            </table>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="medium grey padded section">
             <div class="header">
@@ -497,7 +502,7 @@
                 </div>
             </div>
         </div>
-        <div class="nav">
+        <div class="nav desktop">
             <div class="link">
                 <a href="/">
                     DBQR-QA
@@ -537,6 +542,22 @@
                 <a href="/future.html">
                     Contact
                 </a>
+            </div>
+        </div>
+        <div class="nav mobile">
+            <div class="container">
+                <div class="left">
+                    <div class="link">
+                        <a href="/">
+                            DBQR-QA
+                        </a>
+                    </div>
+                </div>
+                <div class="right">
+                    <span class="material-symbols-outlined menu">
+                        menu
+                    </span>
+                </div>
             </div>
         </div>
     </body>
