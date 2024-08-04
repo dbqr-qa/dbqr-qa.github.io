@@ -35,6 +35,14 @@ a {
     cursor: default;
 }
 
+@media only screen and (max-width: 1300px) and (orientation:portrait) {
+    .button {
+        font-size:.9em;
+        padding: 20px 30px;
+        border-radius: 20px;
+    }
+}
+
 .landing {
     width: 100%;
     padding-top: 50px;
@@ -67,17 +75,6 @@ a {
     opacity: .85;
 }
 
-@media only screen and (max-width: 700px) {
-    .landing .header .title {
-        font-size: 4em;
-    }
-
-    .landing .header .name {
-        font-size: 1.5em;
-        width: 80%;
-    }
-}
-
 .landing .header .date {
     color: white;
     font-size: 1.2em;
@@ -94,6 +91,36 @@ a {
     display: inline-block;
     width: 100%;
     max-width: 1700px;
+}
+
+@media only screen and (max-width: 700px) {
+    .landing .header .title {
+        font-size: 4em;
+    }
+
+    .landing .header .name {
+        font-size: 1.5em;
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 1300px) and (orientation:portrait) {
+    .landing {
+        padding-top: 140px;
+    }
+
+    .landing .header .title {
+        font-size: 10em;
+    }
+
+    .landing .header .name {
+        font-size: 4em;
+        max-width: 80%;
+    }
+
+    .landing .header .date {
+        font-size: 2.5em;
+    }
 }
 
 .section.padded {
@@ -166,6 +193,26 @@ a {
     color: #F6008B;
 }
 
+@media only screen and (max-width: 1300px) and (orientation:portrait) {
+    .section .header .leading {
+        font-size: 2em;
+    }
+
+    .section .header .title {
+        font-size: 10em;
+    }
+
+    .section .header .description {
+        font-size: 3em;
+        max-width: 80%;
+    }
+
+    .section .header .description.only {
+        font-size: 3.5em;
+        margin-top: 40px;
+    }
+}
+
 .section.medium .header .title {
     font-size: 4em;
     font-weight: 500;
@@ -174,6 +221,17 @@ a {
 
 .section.medium .header .description {
     font-size: 1.5em;
+}
+
+@media only screen and (max-width: 1300px) and (orientation:portrait) {
+    .section.medium .header .title {
+        font-size: 6em;
+    }
+
+    .section.medium .header .description {
+        font-size: 2.5em;
+        max-width: 80%;
+    }
 }
 
 .section.splitted .container {
@@ -209,6 +267,17 @@ a {
     font-size: 1.3em;
     max-width: 300px;
     opacity: .6;
+}
+
+@media only screen and (max-width: 1300px) and (orientation:portrait) {
+    .section.splitted .split .header .title {
+        font-size: 4em;
+    }
+
+    .section.splitted .split .header .description {
+        font-size: 2.7em;
+        max-width: 80%;
+    }
 }
 
 .section.splitted .split .content {
@@ -260,6 +329,46 @@ a {
     height: 500px;
 }
 
+@media only screen and (max-width: 1300px) and (orientation:portrait) {
+    .section.splitted .split .content table {
+        font-size: 2.5em;
+        border-radius: 50%;
+        margin-top: 50px;
+    }
+
+    .section.splitted .split .content td {
+        padding-bottom: 30px;
+    }
+
+    .section.splitted .split .content td:first-child {
+        width: 140px;
+        text-align: right;
+    }
+
+    .section.splitted .split .content td:nth-child(4) {
+        padding-left: 10px;
+    }
+
+    .section.splitted .split .content td:last-child {
+        padding-right: 30px;
+    }
+
+    .section.splitted .split .stats .symbol {
+        width: 1em;
+    }
+
+    .section.splitted .split .stats .note {
+        font-size: 2.2em;
+        max-width: 80%;
+    }
+
+    .section.small.splitted .split {
+        height: auto;
+        padding-top: 20px;
+        padding-bottom: 50px;
+    }
+}
+
 .section .split.grey {
     background-color: #f5f5f5;
 }
@@ -309,6 +418,25 @@ a {
     color: rgba(255, 255, 255, .6)
 }
 
+@media only screen and (max-width: 1300px) and (orientation:portrait) {
+    .section .split.bottom .content {
+        width: 90%;
+        margin-top: 240px;
+    }
+
+    .section .split.bottom .content .title {
+        font-size: 4em;
+    }
+
+    .section .split.charts .stages .item .text {
+        font-size: 2em;
+    }
+    
+    .section .split.charts .stages .item .text .questions {
+        font-size: 1em;
+    }
+}
+
 .section .split.clock {
     background-image: url("/images/index/clock.jpg");
     background-repeat: no-repeat;
@@ -329,6 +457,16 @@ a {
 .section .split.clock .date {
     font-size: 1.1em;
     color: rgba(255, 255, 255, .6)
+}
+
+@media only screen and (max-width: 1300px) and (orientation:portrait) {
+    .section .split.clock .text {
+        font-size: 2.5em;
+    }
+
+    .section .split.clock .date {
+        font-size: 2.3em;
+    }
 }
 
 .section.splitted .dates .content table {
@@ -374,6 +512,27 @@ a {
     color: #aaa;
 }
 
+@media only screen and (max-width: 1300px) and (orientation:portrait) {
+    .section.splitted .dates .content {
+        padding-left: 30px;
+        padding-right: 20px;
+    }
+
+    .section.splitted .dates .content table {
+        font-size: 2.5em;
+    }
+
+    .section.splitted .dates .content .status {
+        width: 130px;
+        padding: 10px 15px;
+    }
+
+    .section.splitted .dates .content td {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+}
+
 .section.compact .container {
     height: 300px;
     width: 100%;
@@ -383,8 +542,14 @@ a {
     padding-top: 20px;
 }
 
+@media only screen and (max-width: 1300px) and (orientation:portrait) {
+    .section.compact .container {
+        height: 430px;
+    }
+}
+
 .section.start .container {
-    background-image: url("/images/index/trains.jpg");
+    background-image: url("/images/index/trains.jpg?t=1");
     background-repeat: no-repeat;
     background-position: center;
     background-color: black;
@@ -408,24 +573,12 @@ a {
     border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
-.section.bottom {
-    color: #aaa;
-    padding-top: 30px;
-    padding-bottom: 20px;
-    font-family: "Bebas Neue", "Arial", sans-serif;
-    font-weight: 400;
-}
-
-.section.bottom .center {
-    width: 100%;
-    text-align: center;
-}
-
-.section.bottom .center .icons img {
-    max-height: 70px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
+@media only screen and (max-width: 1300px) and (orientation:portrait) {
+    .section.start .subscribe .button {
+        font-size: 2.5em;
+        padding: 20px 40px;
+        border-radius: 50px;
+    }
 }
 
 .cards {
@@ -449,6 +602,15 @@ a {
     box-shadow: 0px 0px 5px 5px rgb(0 0 0 / 5%);
 }
 
+.cards .card .icon img {
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+.cards .card .text {
+    font-size: 1.1em;
+}
+
 @media only screen and (max-width: 1180px) {
     .cards .card {
         width: 80%;
@@ -460,13 +622,20 @@ a {
     }
 }
 
-.cards .card .icon img {
-    width: 200px;
-    margin-bottom: 20px;
-}
+@media only screen and (max-width: 1300px) and (orientation:portrait) {
+    .cards .card {
+        height: auto;
+        padding-top: 30px;
+        padding-bottom: 50px;
+        padding-left: 40px;
+        padding-right: 40px;
+        margin-bottom: 70px;
+    }
 
-.cards .card .text {
-    font-size: 1.1em;
+    .cards .card .text {
+        font-size: 2.5em;
+        margin-top: 20px;
+    }
 }
 
 .section.medium .cards {
@@ -535,70 +704,17 @@ a {
     }
 }
 
-.nav {
-    position: fixed;
-    vertical-align:top;
-    top: 0px;
-    width: 100%;
-    color: white;
-    text-align: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    background-color: rgba(7, 21, 34, .8);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-}
-
-.nav .link {
-    display: inline-block;
-    margin-left: 15px;
-    margin-right: 15px;
-}
-
-.nav .link a {
-    color: white;
-    opacity: .5;
-}
-
-.nav .link a:hover {
-    opacity: 1;
-}
-
-.nav.mobile {
-    display: none;
-}
-
-@media only screen and (max-width: 800px) {
-    .nav.desktop {
-        display: none;
+@media only screen and (max-width: 1300px) and (orientation:portrait) {
+    .programs .question .order {
+        font-size: 2.3em;
     }
 
-    .nav.mobile {
+    .programs .question .text {
+        font-size: 2.5em;
+    }
+
+    .programs .question {
         display: block;
-    }
-
-    .nav.mobile .container{
-        display: grid;
-        grid-template-columns: auto auto;
-        align-items: center;
-    }
-    
-    .nav.mobile .left {
-        text-align: left;
-        padding-left: 10px;
-    }
-
-    .nav.mobile .right {
-        text-align: right;
-        padding-right: 20px;
-    }
-
-    .nav.mobile .menu {
-        opacity: .5;
-        cursor: pointer;
-    }
-
-    .nav.mobile .menu:hover {
-        opacity: 1;
+        margin-top: 40px;
     }
 }

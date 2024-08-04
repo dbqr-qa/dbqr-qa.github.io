@@ -1,0 +1,19 @@
+.section.bottom {
+    color: #aaa;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    font-family: "Bebas Neue", "Arial", sans-serif;
+    font-weight: 400;
+}
+
+.section.bottom .center {
+    width: 100%;
+    text-align: center;
+}
+
+.section.bottom .center .icons img {
+    max-height: 70px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
