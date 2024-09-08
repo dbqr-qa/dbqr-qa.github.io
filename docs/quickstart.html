@@ -1,0 +1,497 @@
+<html>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <link rel="stylesheet" href="styles/quickstart.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+  <script>hljs.highlightAll();</script>
+
+  <head>
+    <title>DBQR-QA: Quick Start</title>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+      <div class="container">
+        <a class="navbar-brand" href="/">DBQR-QA</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" href="#">Quick Start</a>
+          <a class="nav-link" href="downloads.html">Downloads</a>
+          <a class="nav-link" href="join.html">Participate</a>
+          <a class="nav-link" href="https://github.com/dbqr-qa/dbqr-qa" target="_blank">Code</a>
+          <a class="nav-link" href="https://github.com/dbqr-qa/dbqr-qa/issues" target="_blank">Issues</a>
+          <a class="nav-link" href="https://aclanthology.org/2024.findings-acl.900" target="_blank">Paper</a>
+          <a class="nav-link" href="mailto: r.nararatwong@aist.go.jp">Contact</a>
+        </div>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <p>
+        <h1>Quick Start</h1>
+      </p>
+      <p>
+        <div id="colab">
+          <div class="left col">
+            <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Colaboratory_SVG_Logo.svg">
+          </div>
+          <div class="center col">
+            Notebook available on Google Colab
+          </div>
+          <div class="right col">
+            <a href="https://colab.research.google.com/drive/146sdRwb7SxDgQkf5Yst998scuGsjKSJF?usp=sharing" target="_blank">
+              <button type="button" class="btn btn-primary">View Code</button>
+            </a>
+          </div>
+        </div>
+      </p>
+      <p>
+        <h2 id="setup">Setup</h2>
+      </p>
+      <p>
+        DBQR-QA uses Python, and for this shared task, 
+        you will only need <a href="https://pandas.pydata.org" target="_blank">Pandas</a> to read and manipulate the tables. 
+        To get started, download the dataset:
+      </p>
+      <table class="table" id="downloads">
+        <thead>
+          <tr>
+          <th scope="col">Stage</th>
+          <th scope="col">Link</th>
+          <th scope="col">Samples</th>
+          <th scope="col">Available</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+          <td>Practice</td>
+          <td>
+            <a href="https://dbqr-qa.s3.amazonaws.com/practice.tar.gz" target="_blank">
+              Download
+            </a>
+          </td>
+          <td>50 questions</td>
+          <td>2 September 2024</td>
+          </tr>
+          <tr>
+          <td>Training</td>
+          <td>-</td>
+          <td>200 questions</td>
+          <td>15 September 2024</td>
+          </tr>
+          <tr>
+          <td>Blind test</td>
+          <td>-</td>
+          <td>150 questions</td>
+          <td>23 October 2024</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        <h2 id="data">Data Structure</h2>
+      </p>
+      <p>
+        We organized the questions and labels into chats. 
+        Each chat contains a series of ten conversational questions stored in JSON files 
+        (with corresponding tables stored as a dictionary of <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html" target="_blank">Pandas Data Frames</a> in pickle files) 
+        in the following structure:
+      </p>
+      <pre>
+        <code>data
+|- questions
+|  |- chat-1-01
+|  |  |- question-01.json
+|  |  |- ...
+|  |  |- question-10.json
+|  |- ...
+|- tables
+|  |- chat-1-01
+|  |  |- question-01.pkl
+|  |  |- ...
+|  |  |- question-10.pkl
+|  |- ...
+        </code>
+      </pre>
+      <p>
+        Each JSON file represents a question-answer pair in the following format:
+      </p>
+      <pre>
+        <code class="json">{
+  "sectionID": (Integer) Dataset section ID (1 to 5),
+  "sectionTitle": (String) Dataset section title,
+  "conversationID": (Integer) Conversation ID
+  "questionID": (Integer) Question ID,
+  "question": (String) Question,
+  "vars": (Dictionary) Variables (e.g., entities, numbers, years),
+  "queries": (Dictionary) Database queries (output to pickle files),
+  "program": (List) A series of operators and parameters,
+  "answer": (Any) The final answer
+}</code>
+      </pre>
+      <p>
+        We used a series of pre-defined functions to construct a program that manipulates the input tables to produce the answers.
+        However, these functions are optional and not part of the evaluation. 
+        You may process the tables in any way, for example, 
+        by using a language model to generate independent programs.
+      </p>
+      <p>
+        The queries are in <a href="https://neo4j.com/docs/cypher-manual/current/introduction/" target="_blank">Cypher</a> (query language). 
+        We used these queries to get the data from the graph database (<a href="https://neo4j.com/" target="_blank">Neo4j</a>).
+        The outputs of the queries are <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html" target="_blank">Pandas Data Frames</a> stored in pickle files. 
+        The following is an example of a question, variables, queries, and a program:
+      </p>
+      <pre>
+        <code class="json">{
+  ...
+  "question": "Was Caterpillar's average total revenue higher or lower than Realogy's lowest net income from 2019 to 2021?",
+  "vars": {
+    "company_1": {
+      "mention": "Caterpillar",
+      "name": "CATERPILLAR INC"
+    },
+    "concept_1": {
+      "mention": "total revenue",
+      "name": "us-gaap:Revenues"
+    }
+    ...
+  },
+  "queries": {
+    "var_q1_p1": "WITH [\"CATERPILLAR INC\"] AS companies, ... RETURN o.name AS company ...",
+    ...
+  },
+  "program": [
+    "var_q1_p1 = get_company_facts(company_1, concept_1, start=year_1, end=year_2)",
+    ...
+    "var_q1_p3 = mean(var_q1_p1, axis='columns', level=null)",
+    ...
+  ]
+}</code>
+      </pre>
+      <p>
+        In this example, <b>get_company_facts</b> is a pre-defined function 
+        that creates a query from variables (e.g., <b>company_1</b>) 
+        and outputs a Data Frame. 
+        Function <b>mean</b> is also pre-defined and takes <b>var_q1_p1</b> as its input.
+        Again, you do not need to use our pre-defined functions in your generated programs 
+        or to calculate the answers.
+      </p>
+      <p>
+        <h3 id="blind">Blind Test</h2>
+      </p>
+      <p>
+        The data for the blind test will exclude the programs and answers. 
+        Participants must submit their answers to our online evaluators (daily limit applies). 
+        We will make the programs and answers available to all participants 
+        during the manual evaluation period. 
+        All data will be available publicly after the evaluation concludes.
+      </p>
+      <p>
+        <h2 id="preparation">Preparation</h2>
+      </p>
+      <p>
+        <h3 id="prep-auto">Automatic</h2>
+      </p>
+      <p>
+        We have created and published a Python package for the dataset. 
+        You can install it directly using the <b>pip</b> command:
+      </p>
+      <pre>
+        <code>pip install dbqrqa</code>
+      </pre>
+      <p>
+        To load the dataset, create an instance of the <b>TableDataset</b> class. 
+        The default location of the dataset is the <b>data</b> folder in the project's top directory. 
+        You can change the location by setting the class's <b>data_path</b> parameter.
+      </p>
+      <p>
+        The class has three stage attributes (<b>practice</b>, <b>train</b>, and <b>test</b>), 
+        each storing an instance of the <b>TableSplit</b> class if the data for 
+        that particular stage is available. 
+        The <b>TableSplit</b> class (<b>dataset.practice</b> in the code below) 
+        automatically loads and manages the input data and tables if available.
+      </p>
+      <pre>
+        <code class="python">from dbqrqa.dataset import TableDataset
+
+dataset = TableDataset()
+practice = dataset.practice</code>
+      </pre>
+      <p>
+        The <b>TableSplit</b> class stores questions, queries, tables, and labels 
+        in the same <a href="#evaluation">structure</a> as the answers for evaluation. 
+        The following example shows how to access them.
+      </p>
+      <pre>
+        <code class="python">practice.questions['chat-1-01']['1']
+practice.answers['chat-1-01']['1']
+practice.queries['chat-1-01']['1']['var_q1_p1']
+practice.tables['chat-1-01']['1']['var_q1_p1']
+        </code>
+      </pre>
+      <p>
+        You can use the <b>TableSplit</b> class's <b>answer</b> function to 
+        assign an answer or directly store all answers to the class's <b>answers</b> attribute.
+        The answers stored directly to the <b>answers</b> attribute must follow the 
+        <a href="#evaluation">evaluation input format</a>.
+      </p>
+      <pre>
+        <code class="python"># Assign an answer individually
+practice.answer("chat-1-01", 1, "lower")
+
+# Assign all answers
+practice.answers = {
+  "chat-1-01": {
+    "1": "lower",
+    ...
+  },
+  ...
+}</code>
+      </pre>
+      <p>
+        <h3 id="prep-manual">Manual</h2>
+      </p>
+      <p>
+        If you prefer to manage the dataset manually, 
+        the following is an example code of how to read the questions and tables:
+      </p>
+      <pre>
+        <code class="python">import json
+import pickle
+from os.path import join
+
+# The folder name is "chat-[sectionID]-[conversationID]"
+# There are five sections and up to ten conversations in a section.
+parent_dir = join("data", "practice")
+
+# There are always 10 files in the "questions" and "tables" folders.
+with open(join(parent_dir, "questions", "chat-1-01", "question-01.json")) as file:
+  sample = json.load(file)
+
+with open(join(parent_dir, "tables", "chat-1-01", "question-01.pkl"), 'rb') as file:
+  table = pickle.load(file)</code>
+      </pre>
+      <p>
+        To display the table, run:
+      </p>
+      <pre>
+        <code class="python">print(table["var_q1_p1"])</code>
+      </pre>
+      <p>
+        The code above outputs the result (table) of the first query (<b>var_q1_p1</b>):
+      </p>
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col">2019</th>
+          <th scope="col">2020</th>
+          <th scope="col">2021</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>CATERPILLAR INC</td>
+          <td>us-gaap:Revenues</td>
+          <td>5.380000e+10</td>
+          <td>4.174800e+10</td>
+          <td>5.097100e+10</td>
+        </tr>
+        </tbody>
+      </table>
+      <p>
+        <h2 id="evaluation">Evaluation</h2>
+      </p>
+      <p>
+        We implemented two evaluators, heuristic and GPT-based, 
+        offering different levels of flexibility and cost. 
+        You can use the <b>evaluate</b> function in the <b>dbqrqa.evaluation</b> module directly 
+        or from the <b>TableSplit</b> class in the <b>TableDataset</b> class.
+      </p>
+      <pre>
+        <code class="python">def evaluate(
+  questions: dict,
+  answers: dict,
+  labels: dict,
+  evaluator: str,       # [GPT only] Choices: 'heuristic', 'gpt-binary', 'gpt-score'
+  model: str,           # [GPT only] GPT model (see OpenAI's documentation for more information)
+  retry: int,           # [GPT only] The limit of how many times the function will try to get the score if the previous attempts failed due to invalid GPT's responses
+  openai_key: str,      # [GPT only] OpenAI API key
+  backup_path: str,     # [GPT only] Path to a file storing the scores and prompts, which can be used to resume evaluation in case of early termination
+  is_notebook: bool     # [GPT only] If set to True, prevent tqdm from outputting a new progress bar for every question
+  ) -> Union[float, dict]:
+  ...</code>
+      </pre>
+      <p>
+        <h3 id="evaluation-auto">Automatic</h3>
+      </p>
+      <p>
+        Once you have assigned the answers, you can use the <b>TableSplit</b> class's 
+        <b>evaluate</b> function to compute the accuracy. 
+        The function also returns the score of each sample (question).
+      </p>
+      <pre>
+        <code class="python">accuracy, scores = practice.evaluate()</code>
+      </pre>
+      <p>
+        You can also switch to the GPT evaluator by setting the <b>evaluator</b> parameter
+        to <b><a href="#gpt-binary">gpt-binary</a></b> or <b><a href="#gpt-score">gpt-score</a></b>,
+        but you will need the OpenAI API key. The backup file (<b>backup_path</b>) stores the scores and prompts, which can be used to resume evaluation in case of early termination.
+      </p>
+      <pre>
+        <code class="python">accuracy, scores = practice.evaluate(
+  evaluator="gpt-binary", 
+  openai_key=openai_key, 
+  backup_path=join("data", "backup"))</code>
+      </pre>
+      <p>
+        <h3 id="evaluation-manual">Manual</h3>
+      </p>
+      <p>
+        The questions must be in the following format:
+      </p>
+      <pre>
+        <code class="json">{
+  "chat-1-01": {
+    "1": "Was Caterpillar's average ...",
+    ...
+  }
+}</code>
+            </pre>
+      <p>
+        The answers and labels can be integer, decimal, string, set, or dictionary in the following format:
+      </p>
+      <pre>
+        <code class="json">{
+  "chat-1-01": {
+    "1": "higher",
+    "2": 48654666666.67,
+    ...
+    "10": {
+      "2018": 48643000000,
+      "2019": 47930000000,
+      ...
+    }
+  }
+}</code>
+      </pre>
+      <p>
+        You can use the <b>evaluate</b> function in <b>dbqrqa.evaluation</b> or 
+        <a href="https://github.com/dbqr-qa/dbqr-qa/blob/main/dbqrqa/evaluation.py" target="_blank">download</a> the code for the evaluators to run your experiments locally.
+      </p>
+      <pre>
+        <code class="python">accuracy, scores = evaluate(questions, answers, labels)</code>
+      </pre>
+      <p>
+        <h4 id="heuristic">Heuristic Evaluator</h4>
+      </p>
+      <p>
+        The heuristic evaluator runs at no additional cost. 
+        However, it is less flexible in handling the model's output, especially for a prompt-based approach. 
+        For example, the model may output "higher" or "greater," possibly with an explanation, 
+        for a question asking whether something is more or less than another. 
+        Even so, it offers a quick preliminary evaluation that works well with numbers, 
+        covering most answers. 
+        The evaluator refers to the label to determine the answer type, 
+        then applies the following rules to process the answers:
+      </p>
+      <ol>
+        <li>
+          <b>Integer</b>: Convert the numeric answer into an integer using <i>int(answer)</i>.
+        </li>
+        <li>
+          <b>Float</b>: Convert the numeric answer into a string with two-digit floating point 
+          using <i>"%.2f" % answer</i>.
+        </li>
+        <li>
+          <b>Set</b>: All items in the prediction and label sets must match. 
+          Otherwise, the algorithm flags the answer as incorrect.
+        </li>
+        <li>
+          <b>Dictionary</b>: All keys and values must match. 
+          The label uses the entity/concept names, not their mentions, e.g., 
+          "CATERPILLAR INC" not "Caterpillar" and "us-gaap: Revenues" not "total revenue."
+        </li>
+      </ol>
+      <p>
+        <h4 id="gpt">GPT Evaluator</h4>
+      </p>
+      <p>
+        We use OpenAI's GPT models for evaluation. 
+        Our online evaluator uses GPT-4o, but you can choose whichever model you want when running locally. 
+        The GPT evaluator is more flexible and accurate (see Section 6.3 in <a href="https://aclanthology.org/2024.findings-acl.900/" target="_blank">our paper</a> for more information) 
+        but will incur additional costs. 
+        You will also need to provide your API key (see <a href="https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key" target="_blank">how to get the key</a>).
+      </p>
+      <p>
+        We created two evaluation prompts: Binary and scoring. 
+        The binary prompt asks the model to determine whether the answer is correct. 
+        The scoring prompt asks the model to grade the answer from 0 to 10, 
+        0 being no match and 10 being an exact match. 
+        You can use both prompts for your evaluation. 
+        However, we only use the binary prompt in this shared task 
+        for simplicity and cost management.
+      </p>
+      <p>
+        <b>System prompt</b>
+      </p>
+      <pre>
+        <code class="text">You are an evaluator. 
+Given a series of conversational questions, 
+your task is to compare an answer to the last question predicted by an AI 
+to an answer labeled by a human.</code>
+      </pre>
+      <p>
+        <b id="gpt-binary">Binary prompt</b> (default)
+      </p>
+      <pre>
+        <code class="text">Question:
+{{question}}
+
+AI's answer: 
+{{answer}}
+
+Human's answer: 
+{{label}}
+
+Are the two answers to the last question the same?
+Answer "yes" or "no" in the following JSON format:
+```
+{
+  "result": "yes" or "no"
+}
+```
+Do not explain or output anything else.</code>
+      </pre>
+      <p>
+        <b id="gpt-score">Scoring prompt</b>
+      </p>
+      <pre>
+        <code class="text">Question:
+{{question}}
+
+Compare the following answers to the last question in the above conversation.
+AI's answer: 
+{{answer}}
+
+Human's answer: 
+{{label}}
+
+On a scale of 0 to 10, 0 = not at all and 10 = same, how similar are the two answers?
+Answer in the following JSON format:
+```
+{
+  "result": A score from 0 to 10
+}
+```
+Do not explain or output anything else.</code>
+      </pre>
+    </div>
+  </body>
+</html>

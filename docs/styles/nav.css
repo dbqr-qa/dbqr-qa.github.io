@@ -23,7 +23,7 @@
     opacity: .5;
 }
 
-.nav .link a:hover {
+.nav .link a:hover, .nav .link.active a {
     opacity: 1;
 }
 

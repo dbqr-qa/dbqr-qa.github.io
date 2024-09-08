@@ -1,0 +1,20 @@
+#colab {
+    display: grid;
+    grid-template-columns: 80px auto 200px;
+    border: 2px solid #bbb;
+    border-radius: 15px;
+    margin: 30px 0px;
+}
+
+#colab .col {
+    align-self: center;
+}
+
+#colab .right {
+    text-align: right;
+    padding-right: 15px;
+}
+
+#colab .logo {
+    height: 50px;
+}

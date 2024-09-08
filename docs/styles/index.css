@@ -6,6 +6,7 @@ body {
 
 a {
     text-decoration: none;
+    color: #4FADEA;
 }
 
 .material-symbols-outlined {
@@ -387,7 +388,7 @@ a {
 }
 
 .section .split.charts {
-    background-image: url("/images/index/charts.jpg");
+    background-image: url("../images/index/charts.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-color: black;
@@ -438,7 +439,7 @@ a {
 }
 
 .section .split.clock {
-    background-image: url("/images/index/clock.jpg");
+    background-image: url("../images/index/clock.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-color: black;
@@ -502,6 +503,11 @@ a {
     color: #4FADEA;
 }
 
+.section.splitted .dates .complete .status {
+    color: white;
+    background-color: #2c5d63;
+}
+
 .section.splitted .dates .pending .status {
     color: #888;
     background-color: #ccc;
@@ -549,7 +555,7 @@ a {
 }
 
 .section.start .container {
-    background-image: url("/images/index/trains.jpg?t=1");
+    background-image: url("../images/index/trains.jpg?t=1");
     background-repeat: no-repeat;
     background-position: center;
     background-color: black;
