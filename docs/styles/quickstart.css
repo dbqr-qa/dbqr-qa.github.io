@@ -1,6 +1,6 @@
 #colab {
     display: grid;
-    grid-template-columns: 80px auto 200px;
+    grid-template-columns: 80px auto 135px;
     border: 2px solid #bbb;
     border-radius: 15px;
     margin: 30px 0px;
