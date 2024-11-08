@@ -1,0 +1,28 @@
+a {
+    text-decoration: none;
+}
+
+.spinner-border {
+    display: none;
+    margin-left: 5px;
+}
+
+#deactivate-button {
+    display: none;
+}
+
+#complete-button {
+    display: none;
+}
+
+#submission {
+    display: none;
+}
+
+#history {
+    display: none;
+}
+
+#history.complete tr:first-child td {
+    background-color: #e7eaf6;
+}

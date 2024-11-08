@@ -1,0 +1,134 @@
+<html>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <link rel="stylesheet" href="styles/common.css">
+  <link rel="stylesheet" href="styles/submit.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  
+  <script>hljs.highlightAll();</script>
+  <script type="text/javascript" src="scripts/jquery-3.7.1.min.js"></script>
+  <script type="text/javascript" src="scripts/submit.js"></script>
+
+  <head>
+    <title>DBQR-QA: Submit</title>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+      <div class="container">
+        <a class="navbar-brand" href="/">DBQR-QA</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link" href="quickstart.html">Quick Start</a>
+          <a class="nav-link" href="downloads.html">Downloads</a>
+          <a class="nav-link active" href="#">Submit</a>
+          <a class="nav-link" href="leaderboard.html">Leaderboard</a>
+          <a class="nav-link" href="https://github.com/dbqr-qa/dbqr-qa" target="_blank">Code</a>
+          <a class="nav-link" href="https://github.com/dbqr-qa/dbqr-qa/issues" target="_blank">Issues</a>
+          <a class="nav-link" href="https://aclanthology.org/2024.findings-acl.900" target="_blank">Paper</a>
+          <a class="nav-link" href="mailto: rungsiman@gmail.com">Contact</a>
+        </div>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <p>
+        <h1>Participate</h1>
+      </p>
+      <p>
+        Click "register" below to send us your email address and display name for the leaderboard. 
+        After we review your application, you will receive an access token, which you can use to submit your answers.
+      </p>
+      <p>
+        <a class="button" href="https://forms.gle/XqLVVBuXf7Y27z4P7" target="_blank">
+          <button type="button" class="btn btn-primary">Register</button>
+        </a>
+      </p>
+      <p>
+        <h2>Login</h2>
+      </p>
+      <p>
+        For resource management and security reasons, each user can submit up to 100 times per day.
+        Register to get your access token.
+      </p>
+      <p>
+        <div class="mb-3">
+          <label for="token-input" class="form-label">Access token</label>
+          <input type="email" class="form-control" id="token-input">
+        </div>
+        <div>
+          <button type="button" class="btn btn-primary" id="activate-button">
+            Log In
+            <div class="spinner-border spinner-border-sm" role="status" id="activate-spinner">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </button>
+          <button type="button" class="btn btn-danger" id="deactivate-button">Log Out</button>
+        </div>
+      </p>
+      <div id="submission">
+        <p>
+          <h2>Submit</h2>
+        </p>
+        <p>
+          Your display name for the leaderboard is <b id="username"></b>.
+          You can submit no more than <b id="quota">0</b> files today.
+        </p>
+        <div class="mb-3">
+          <label for="submit-file" class="form-label">Answer file (JSON)</label>
+          <input class="form-control" type="file" id="submit-file" name="file">
+        </div>
+        <div>
+          <button type="button" class="btn btn-primary" id="submit-button">
+            Submit
+            <div class="spinner-border spinner-border-sm" role="status" id="submit-spinner">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </button>
+          <a href="#history">
+            <button type="button" class="btn btn-success" id="complete-button">Complete</button>
+          </a>
+          <button type="button" class="btn btn-outline-primary" id="name-change-button">
+            Change Display Name
+            <div class="spinner-border spinner-border-sm" role="status" id="name-change-spinner">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </button>
+        </div>
+      </div>
+      <div id="history">
+        <p>
+          <h2>History</h2>
+        </p>
+        <p>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Entry</th>
+                <th>Date/Time</th>
+                <th>Stage</th>
+                <th>Status</th>
+                <th>Grader Score</th>
+                <th>GPT Score</th>
+                <th>Human Score</th>
+                <th>File</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+          <nav aria-label="History pages">
+            <ul class="pagination" id="history-pages"></ul>
+          </nav>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
