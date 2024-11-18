@@ -1,3 +1,27 @@
+const error_message = "An error has occurred. Please check your browser's console for more information.";
+var host;
+var branch;
+
+function initHost() {
+  if (window.location.toString().startsWith('https://dbqr-qa.github.io/')) {
+    host = 'https://chez.my/';
+  } else {
+    host = 'http://127.0.0.1:5000/';
+  }
+}
+
+function initBranch() {
+  if (typeof(Storage) !== 'undefined') {
+    branch = localStorage.getItem('branch');
+
+    if (branch === null) {
+      branch = 'master';
+    }
+
+    $('#branch-selector').val(branch);
+  }
+}
+
 function formatScore(score) {
   if (typeof score === 'number') {
     return score.toFixed(2);
@@ -26,19 +50,17 @@ function renderBoard(stage, records) {
     body.append(tr);
   }
 
-  parent.append(table);
-  console.log(table);
+  parent.empty().append(table);
 }
 
 function loadBoard() {
   $.get({
-    'url': 'https://chez.my/dbqr-qa/leaderboard',
+    'url': host + 'dbqr-qa/leaderboard?branch=' + branch,
     success: function(data) {
       if (data.status === 'ok') {
-        renderBoard('practice', data.scores.practice);
-        renderBoard('training', data.scores.training);
-        renderBoard('test', data.scores.test);
-        console.log(data);
+        renderBoard('practice', data.scores[branch].practice);
+        renderBoard('training', data.scores[branch].training);
+        renderBoard('test', data.scores[branch].test);
 
       } else if (data.status === 'error') {
         alert(data.message);
@@ -50,6 +72,19 @@ function loadBoard() {
   });
 }
 
+function changeBranch() {
+  branch = $('#branch-selector').val();
+  loadBoard();
+
+  if (typeof(Storage) !== 'undefined') {
+    localStorage.setItem('branch', branch);
+  }
+}
+
 $(document).ready(function() {
-    loadBoard();
+  initHost();
+  initBranch();
+  loadBoard();
+
+  $('#branch-selector').on('change', changeBranch);
 });

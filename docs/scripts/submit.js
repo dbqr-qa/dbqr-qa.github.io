@@ -1,15 +1,29 @@
 const error_message = "An error has occurred. Please check your browser's console for more information.";
 var activated = false;
+var host;
+var branch;
 
-function formatScore(score) {
-  if (typeof score === 'number') {
-    return score.toFixed(2);
+function initHost() {
+  if (window.location.toString().startsWith('https://dbqr-qa.github.io/')) {
+    host = 'https://chez.my/';
   } else {
-    return score;
+    host = 'http://127.0.0.1:5000/';
   }
 }
 
-function loadToken() {
+function initBranch() {
+  if (typeof(Storage) !== 'undefined') {
+    branch = localStorage.getItem('branch');
+
+    if (branch === null) {
+      branch = 'master';
+    }
+
+    $('#branch-selector').val(branch);
+  }
+}
+
+function initToken() {
   if (typeof(Storage) !== 'undefined') {
     token = localStorage.getItem('token');
 
@@ -17,6 +31,14 @@ function loadToken() {
       $('#token-input').val(token);
       activate();
     }
+  }
+}
+
+function formatScore(score) {
+  if (typeof score === 'number') {
+    return score.toFixed(2);
+  } else {
+    return score;
   }
 }
 
@@ -35,7 +57,7 @@ function activate() {
   $('#activate-spinner').css('display', 'inline-block');
   
   $.get({
-    'url': 'https://chez.my/dbqr-qa/activate',
+    'url': host + 'dbqr-qa/activate',
     data: data,
     dataType: 'json',
     success: function(data) {
@@ -99,12 +121,13 @@ function submit() {
 
   data.append('token', $('#token-input').val());
   data.append('file', $('#submit-file')[0].files[0]);
+  data.append('branch', branch);
   
   $('#submit-spinner').css('display', 'inline-block');
   disableInput();
 
   $.post({
-    'url': 'https://chez.my/dbqr-qa/submit',
+    'url': host + 'dbqr-qa/submit',
     data: data,
     processData: false,
     contentType: false,
@@ -137,17 +160,18 @@ function submit() {
   });
 }
 
-function fetchHistory(page, isComplete) {
+function fetchHistory(page, isSubmission) {
   const token = $('#token-input').val();
   const table = $('#history tbody');
   const params = {
     token: token,
+    branch: branch,
     page: page}
 
   disableInput();
 
   $.get({
-    'url': 'https://chez.my/dbqr-qa/history',
+    'url': host + 'dbqr-qa/history',
     data: params,
     dataType: 'json',
     success: function(data) {
@@ -166,7 +190,7 @@ function fetchHistory(page, isComplete) {
             .append($('<td>').html(formatScore(record.gptScore)))
             .append($('<td>').html(formatScore(record.humanScore)))
             .append($('<td>').append(
-              $('<a href="https://chez.my/dbqr-qa/download?token=' + token + '&timestamp=' + record.timestamp + '">').html('View')
+              $('<a href="' + host + 'dbqr-qa/download?token=' + token + '&branch=' + branch + '&timestamp=' + record.timestamp + '">').html('View')
             ));
 
           table.append(row);
@@ -217,7 +241,7 @@ function fetchHistory(page, isComplete) {
 
         pages.append(next);
 
-        if (isComplete) {
+        if (isSubmission) {
           $('#history').addClass('complete');
         } else {
           $('#history').removeClass('complete');
@@ -250,7 +274,7 @@ function changeName() {
     disableInput();
 
     $.post({
-      'url': 'https://chez.my/dbqr-qa/username',
+      'url': host + 'dbqr-qa/username',
       data: params,
       dataType: 'json',
       success: function(data) {
@@ -276,11 +300,23 @@ function changeName() {
   }
 }
 
+function changeBranch() {
+  branch = $('#branch-selector').val();
+  fetchHistory(1, false);
+
+  if (typeof(Storage) !== 'undefined') {
+    localStorage.setItem('branch', branch);
+  }
+}
+
 $(document).ready(function() {
-  loadToken();
+  initHost();
+  initBranch();
+  initToken();
 
   $('#activate-button').click(activate);
   $('#deactivate-button').click(deactivate);
   $('#submit-button').click(submit);
   $('#name-change-button').click(changeName);
+  $('#branch-selector').on('change', changeBranch);
 });
