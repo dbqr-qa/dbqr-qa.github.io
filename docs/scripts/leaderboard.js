@@ -61,6 +61,8 @@ function loadBoard() {
         renderBoard('practice', data.scores[branch].practice);
         renderBoard('training', data.scores[branch].training);
         renderBoard('test', data.scores[branch].test);
+        
+        $('#note-branch').html($('#branch-selector').val());
 
       } else if (data.status === 'error') {
         alert(data.message);
